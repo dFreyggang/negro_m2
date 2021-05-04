@@ -1,0 +1,23 @@
+public class Constituyente {
+    private String nombreConstituyente; //Unico, no existen constituyentes con el mismo nombre
+    private String partidoPolitico;
+    private int cantidadFirmas;
+    private int numeroDistrito;
+
+	//CONSTRUCTOR
+	public Constituyente(String nombreConstituyente, String partidoPolitico, int cantidadFirmas, int numeroDistrito){
+		this.nombreConstituyente = nombreConstituyente;
+		this.partidoPolitico = partidoPolitico;
+		this.cantidadFirmas = cantidadFirmas;
+		this.numeroDistrito = numeroDistrito;
+	}
+
+	public int getCantidadFirmas(int firmas){
+		return cantidadFirmas;
+	}
+
+	public String getNombreConstituyente(int posicion){
+		return constituyentes[posicion].nombreConstituyente;
+	}
+
+}

@@ -1,0 +1,8 @@
+public class Elector {
+    private String nombre;
+    private String apellido;
+    private String rut;
+    private Constituyente voto;
+
+
+}

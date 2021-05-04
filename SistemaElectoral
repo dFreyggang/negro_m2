@@ -1,0 +1,27 @@
+public class SistemaElectoral {
+    private String nombrePresidente;
+    private String fechaElecciones;
+    private ListaConstituyentes constituyentes;
+    private ListaComunas comunas;
+    //CONSTRUCTOR
+    public SistemaElectoral(String nombrePresidente, String fechaElecciones, ListaConstituyentes constituyentes, ListaComunas comunas){
+        this.nombrePresidente = nombrePresidente;
+        this.fechaElecciones = fechaElecciones;
+        this.constituyentes = constituyentes;
+        this.comunas = comunas;
+    }
+    //METODOS
+
+    public String getNombrePresidente(){
+        return nombrePresidente;
+    }
+    public String getFechaElecciones(){
+        return fechaElecciones;
+    }
+    public ListaConstituyentes getConstituyentes(){
+        getConstituyentes();
+    }
+    public ListaComunas getComunas(){
+        getComunas();
+    }
+}
