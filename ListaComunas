@@ -1,12 +1,7 @@
 public class ListaComunas {
-    private Comuna [] comunas;
+    //ATRIBUTOS
+	private Comuna [] comunas;
 
-	private String nombreConstituyenteGanador (int numeroDistrito){
-
-	}
-	
-	
-	
-
-
+	//CONSTRUCTOR
+	this.comuna = comuna;
 }

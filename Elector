@@ -1,8 +1,13 @@
 public class Elector {
-    private String nombre;
+    //ATRIBUTOS
+	private String nombre;
     private String apellido;
     private String rut;
     private Constituyente voto;
 
-
+	//CONSTRUCTORES
+	this.nombre = nombre;
+	this.apellido = apellido;
+	this.rut = rut;
+	this.voto = voto;
 }

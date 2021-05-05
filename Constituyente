@@ -12,12 +12,17 @@ public class Constituyente {
 		this.numeroDistrito = numeroDistrito;
 	}
 
-	public int getCantidadFirmas(int firmas){
+	//GETTERS
+	public int getCantidadFirmas(){
 		return cantidadFirmas;
 	}
 
-	public String getNombreConstituyente(int posicion){
-		return constituyentes[posicion].nombreConstituyente;
+	public String getNombreConstituyente (){
+		return nombreConstituyente;
 	}
+
+    public int getNumeroDistrito () {
+        return numeroDistrito;
+    }
 
 }

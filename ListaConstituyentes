@@ -1,4 +1,4 @@
-|1import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class ListaConstituyentes {
     
@@ -13,31 +13,75 @@ public class ListaConstituyentes {
 	}
 
 
-	
 
-	private String nombreConstituyenteGanador(int numeroDistrito){
-		String ganador;
-		int posicion;
-		int totalFirmasGanador = contarFirmas(constituyentes.get(0).nombreConstituyente());
+
+	//METODOS
+	//CALCULAR TAMAÑO DEL ARREGLO
+	public int calcularTamañoNuevoArreglo (int numeroDistrito) {
+		int cantidad = 0;
+		double promedioFirmas = calcularPromedioFirmas(numeroDistrito);
 		int totalFirmasActual;
 
-		for (int i=0 ; i>constituyentes.size() ; i++){
-			totalFirmasActual = contarFirmas(constituyentes.get(i).nombreConstituyente());
-			if (totalFirmasActual > totalFirmasGanador){
-				totalFirmasGanador = totalFirmasActual;
-				posicion = i;
+		for (int i=0 ; i<cantidadCandidatos ; i++){ 	
+			totalFirmasActual = constituyentes.get(i).getCantidadFirmas();				//recorro TODOS los constituyentes
+			if (constituyentes.get(i).getNumeroDistrito() == numeroDistrito){ 			//evaluo si coincide el numero de distrito
+				if (totalFirmasActual >= promedioFirmas){ 								//Si es mayor o igual que el promedio de firmas, lo contabilizo
+					cantidad++;																			
+				}
 			}
 		}
-		return constituyentes.get(i).nombreConstituyente();;
+		return cantidad;
 	}
 
-	private int contarFirmas (String nombreConstituyente){
-		int totalFirmas = 0;
-		for (int i=0 ; i>constituyentes.size() ; i++){
-			if(nombreConstituyente == nombreConstituyente.equals()){
-				totalFirmas++;
+	//CALCULAR PROMEDIO DE FIRMAS
+	public double calcularPromedioFirmas (int numeroDistrito) {
+		double promedio;
+		int suma = 0;
+		int actual;
+		int contConstituyentesDeEseDistrito = 0;
+
+		for (int i=0 ; i<cantidadCandidatos ; i++){ //recorro TODOS los constituyentes
+			if (constituyentes.get(i).getNumeroDistrito() == numeroDistrito){ //evaluo si coincide el numero de distrito
+				actual = constituyentes.get(i).getCantidadFirmas();
+				suma += actual;
+				contConstituyentesDeEseDistrito++;
 			}
 		}
-		return totalFirmas;
+
+		promedio = suma / contConstituyentesDeEseDistrito;
+
+		return promedio;
 	}
+
+	//METODO PRINCIPAL: CREAR ARREGLO CON TODOS LOS CONSTITUYENTES CON MAS FIRMAS QUE EL PROMEDIO
+	public String [] constituyentesMasFirmas (int numeroDistrito){
+		int posicion = 0;
+		int tamañoNuevoArreglo;
+		int totalFirmasActual;
+		double promedioFirmas;
+
+		//Calcular el tamaño que sera necesario para crear el arreglo SIN ELEMENTOS NULL
+		tamañoNuevoArreglo = calcularTamañoNuevoArreglo(numeroDistrito);
+
+		//Crear el arreglo con el tamaño ya definido
+		String[] candidatosConMasFirmas = new String[tamañoNuevoArreglo];
+
+		//Calculo cual es el promedio de firmas de ese distrito
+		promedioFirmas = calcularPromedioFirmas(numeroDistrito);
+
+		//Recorrer TODOS los constituyentes para evaluar
+		for (int i=0 ; i<cantidadCandidatos ; i++){ 													//recorro TODOS los constituyentes
+			if (constituyentes.get(i).getNumeroDistrito() == numeroDistrito){ 							//evaluo si coincide el numero de distrito
+				totalFirmasActual = constituyentes.get(i).getCantidadFirmas(); 							//Obtengo la cantidad de firmas del actual que estoy evaluando
+				if (totalFirmasActual >= promedioFirmas){ 												//Si es mayor o igual que el promedio de firmas, lo agrego al arreglo
+					candidatosConMasFirmas[posicion] = constituyentes.get(i).getNombreConstituyente();
+					posicion++;																			//Actualizo la posicion del indice del nuevo arreglo para evitar valores NULL entre medio
+				}
+			}
+			
+		}
+		return candidatosConMasFirmas;	
+	}
+}
+
 
